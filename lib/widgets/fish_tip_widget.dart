@@ -38,14 +38,14 @@ class FishTipWidget extends StatelessWidget {
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
+            const Padding(
+              padding: EdgeInsets.symmetric(
                 horizontal: 10,
                 vertical: 20,
               ),
               child: Text(
-                '$fishName의 특징',
-                style: const TextStyle(
+                '연어의 형태는 몸은 약간 가늘고 긴 편으로 꼬리는 가는 것이 특징입니다. 양턱의 이빨은 송곳니 모양으로 뾰족합니다. 머리는 원추형이고, 배지느러미는 배의 정중앙에 위치하며, 각 지느러미에는 가시가 없습니다.',
+                style: TextStyle(
                   fontSize: 15,
                 ),
               ),

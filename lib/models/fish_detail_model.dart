@@ -10,3 +10,4 @@ class FishDetailModel {
     this.amount,
   );
 }
+

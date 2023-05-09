@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class FishImageWidget extends StatelessWidget {
-  const FishImageWidget({
+class FishRecipeWidget extends StatelessWidget {
+  const FishRecipeWidget({
     super.key,
     required this.fishName,
   });
@@ -29,7 +29,7 @@ class FishImageWidget extends StatelessWidget {
                   width: 10,
                 ),
                 Text(
-                  '$fishName의 이미지',
+                  '$fishName 요리',
                   style: const TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
@@ -41,21 +41,58 @@ class FishImageWidget extends StatelessWidget {
               height: 10,
             ),
             SizedBox(
-              height: 200,
+              height: 270,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemCount: 3,
                 itemBuilder: (BuildContext context, int index) {
-                  if (index == 0) {
-                    return const TempImage1();
-                  } else if (index == 1) {
-                    return const TempImage2();
-
-                  } else {
-                    return const TempImage3();
-
+                  if(index == 0) {
+                    return SizedBox(
+                      height: 200,
+                      width: 200,
+                        child: Column(
+                          children: const [TempImage4(),
+                          SizedBox(height: 20,),
+                          Text('연어 스테이크', style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+                  if(index == 1) {
+                    return SizedBox(
+                      height: 200,
+                      width: 200,
+                        child: Column(
+                          children: const [TempImage5(),
+                          SizedBox(height: 20,),
+                          Text('연어 샐러드', style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+                  if(index == 2) {
+                    return SizedBox(
+                      height: 200,
+                      width: 200,
+                        child: Column(
+                          children: const [TempImage6(),
+                          SizedBox(height: 20,),
+                          Text('연어 덮밥', style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
                   }
                   return null;
+                  
                 },
                 separatorBuilder: (context, index) {
                   return const SizedBox(
@@ -71,8 +108,8 @@ class FishImageWidget extends StatelessWidget {
   }
 }
 
-class TempImage extends StatelessWidget {
-  const TempImage({
+class TempImage4 extends StatelessWidget {
+  const TempImage4({
     super.key,
   });
 
@@ -80,17 +117,19 @@ class TempImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image.network(
       // 'http://rgo4.com/files/attach/images/2676751/909/558/019/093271cf31ad9cabdf4216e7bbcc7b7b.jpg',
-      'https://images.ctfassets.net/lufu0clouua1/1pri5R009Gg26o4IEA46cO/722b5d2943e1ac5897a51d71154e2c97/Sockeye-Salmon.jpg',
+      'https://hansando.godohosting.com/yamtable_cdn/data/goods/21/09/36/1000000515/1000000515_detail_094.jpg',
       headers: const {
         "User-Agent":
             "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
       },
+      height: 200,
+      width: 200,
     );
   }
 }
 
-class TempImage1 extends StatelessWidget {
-  const TempImage1({
+class TempImage5 extends StatelessWidget {
+  const TempImage5({
     super.key,
   });
 
@@ -98,17 +137,19 @@ class TempImage1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image.network(
       // 'http://rgo4.com/files/attach/images/2676751/909/558/019/093271cf31ad9cabdf4216e7bbcc7b7b.jpg',
-      'https://media.fisheries.noaa.gov/styles/original/s3/2022-08/640x427-Salmon-Atlantic-NOAAFisheries.png?itok=z_tFH1qP',
+      'https://static.megamart.com/product/image/0875/08751225/08751225_1_960.jpg',
       headers: const {
         "User-Agent":
             "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
       },
+      height: 200,
+      width: 200,
     );
   }
 }
 
-class TempImage2 extends StatelessWidget {
-  const TempImage2({
+class TempImage6 extends StatelessWidget {
+  const TempImage6({
     super.key,
   });
 
@@ -116,29 +157,13 @@ class TempImage2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image.network(
       // 'http://rgo4.com/files/attach/images/2676751/909/558/019/093271cf31ad9cabdf4216e7bbcc7b7b.jpg',
-      'https://cdn.shopify.com/s/files/1/0436/4976/1446/products/Artboard29e.jpg?v=1596815114',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1PbSMmqAC5oa5VjxPB7pbGQKmg_PZH2OiPA&usqp=CAU',
       headers: const {
         "User-Agent":
             "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
       },
-    );
-  }
-}
-
-class TempImage3 extends StatelessWidget {
-  const TempImage3({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Image.network(
-      // 'http://rgo4.com/files/attach/images/2676751/909/558/019/093271cf31ad9cabdf4216e7bbcc7b7b.jpg',
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSam-ZSQeb1PYCE5VQkKXlz5lTIY604imtOFA&usqp=CAU',
-      headers: const {
-        "User-Agent":
-            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
-      },
+      height: 200,
+      width: 200,
     );
   }
 }

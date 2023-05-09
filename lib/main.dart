@@ -1,4 +1,7 @@
 import 'package:camera/camera.dart';
+import 'package:drop_the_fish/models/fish_price_model.dart';
+import 'package:drop_the_fish/screens/%08fish_recommend_screen.dart';
+import 'package:drop_the_fish/screens/fish_price_screen.dart';
 import 'package:drop_the_fish/widgets/fish_bottom_navigation_bar.dart';
 import 'package:drop_the_fish/widgets/camera_screen_tab_widget.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +39,8 @@ class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
   late Future<CameraDescription> camera;
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
+  late Future<List<FishPriceModel>> fishPriceList = _getFishPriceList();
 
   @override
   void initState() {
@@ -74,14 +78,18 @@ class _MyHomePageState extends State<MyHomePage>
       theme: ThemeData(scaffoldBackgroundColor: Colors.black),
       home: Scaffold(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        appBar: _selectedIndex == 0
-            ? null
-            : AppBar(
-                title: Text(widget.title),
-                toolbarOpacity: 0,
-              ),
+        // appBar: _selectedIndex == 0
+        //     ? null
+        //     : AppBar(
+        //         title: Text(widget.title),
+        //         toolbarOpacity: 0,
+        //       ),
+        appBar: AppBar(
+          title: Text(widget.title),
+          toolbarOpacity: 0,
+        ),
         body: Container(
-          color: Colors.black,
+          color: Colors.white,
           child: TabBarView(
             controller: tabController,
             children: [
@@ -94,8 +102,25 @@ class _MyHomePageState extends State<MyHomePage>
                   return const Center(child: CircularProgressIndicator());
                 },
               ),
-              Container(),
-              Container(),
+              Container(
+                color: Colors.blue[50],
+                child: const FishRecommendScreen(),
+              ),
+              FutureBuilder(
+                future: fishPriceList,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return Container(
+                      color: Colors.blue[50],
+                      child: FishPriceScreen(
+                        fishPriceList: snapshot.data!,
+                      ),
+                    );
+                  } else {
+                    return Container();
+                  }
+                },
+              ),
             ],
           ),
         ),
@@ -103,5 +128,38 @@ class _MyHomePageState extends State<MyHomePage>
             FishBottomNavigationBar(tabController: tabController),
       ),
     );
+  }
+
+  Future<List<FishPriceModel>> _getFishPriceList() async {
+    List<dynamic> tempFishModelList = [
+      [
+        "광어",
+        "염장",
+        "중품",
+        "두 마리",
+        ["4,250", "3,660", "3,660", "3,660", "4,598", "3,500", "3,277"],
+      ],
+      [
+        "고등어",
+        "국산(신선 냉장)",
+        "중품",
+        "두 마리",
+        ["4,250", "3,660", "3,660", "3,660", "4,598", "3,500", "3,277"],
+      ],
+      [
+        "명태",
+        "국산(냉동)",
+        "중품",
+        "한 마리",
+        ["4,250", "3,660", "3,660", "3,660", "4,598", "3,500", "3,277"],
+      ],
+    ];
+    List<FishPriceModel> recommondationFishModelList = [];
+
+    for (var json in tempFishModelList) {
+      recommondationFishModelList.add(FishPriceModel.fromJson(json));
+    }
+
+    return recommondationFishModelList;
   }
 }

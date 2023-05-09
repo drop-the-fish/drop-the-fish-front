@@ -10,7 +10,7 @@ class FishDetailService {
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
-      return FishDetailModel('광어(넙치)', 30000, 20000, 25000, 100);
+      return FishDetailModel('연어', 30000, 20000, 25000, 100);
     }
 
     throw Error();

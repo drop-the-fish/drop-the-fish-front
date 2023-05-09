@@ -20,7 +20,7 @@ class _FishCaptureScreenState extends State<FishCaptureScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const FishDetailScreen(),
+        builder: (context) => FishDetailScreen(imagePath: widget.imagePath),
       ),
     );
   }
@@ -42,7 +42,7 @@ class _FishCaptureScreenState extends State<FishCaptureScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               TextButton(
-                onPressed: () {
+                onPressed: () async {
                   onRetryTap(context);
                 },
                 child: const Text(
